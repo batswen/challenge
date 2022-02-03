@@ -31,11 +31,9 @@ function aktuelleFarbeEinstellen(farbindex) {
 function bereichFüllen(x, y) {
     const alteFarbe = document.getElementById(`div-${x}${y}`).style.backgroundColor
 
-    // Diese Abfrage funktioniert nicht
-
-    // if (alteFarbe === aktuelleFarbe) {
-    //     return
-    // }
+    if (document.getElementById(`div-${x}${y}`).getAttribute("data-farbe") === aktuelleFarbe) {
+        return
+    }
     const STACK = []
     STACK.push([x, y])
     while (STACK.length > 0) {
@@ -45,6 +43,7 @@ function bereichFüllen(x, y) {
         if (element && alteFarbe === element.style.backgroundColor) {
             context.fillRect(x, y, 1, 1)
             element.style.backgroundColor = aktuelleFarbe
+            element.setAttribute("data-farbe", aktuelleFarbe)
             STACK.push([x + 1, y])
             STACK.push([x - 1, y])
             STACK.push([x    , y + 1])
@@ -56,10 +55,11 @@ function bereichFüllen(x, y) {
 function feldFärben(element, x, y) {
     if (FÜLLEN.checked) {
         FÜLLEN.checked = false
-        //bereichFüllen(x, y)
+        bereichFüllen(x, y)
         return
     }
     element.style.backgroundColor = aktuelleFarbe
+    element.setAttribute("data-farbe", aktuelleFarbe)
     context.fillRect(x, y, 1, 1)
 }
 
@@ -98,6 +98,7 @@ function zeichenfeldErstellen() {
             DIV.style.backgroundColor = FARBEN[0]
             DIV.setAttribute("id", `div-${x}${y}`)
             DIV.setAttribute("onclick", `feldFärben(this, ${x}, ${y})`)
+            DIV.setAttribute("data-farbe", FARBEN[0]) // weil .style.backgroundColor schreiben und lesen nicht funktioniert
             ZEICHENFELD.appendChild(DIV)
         }
     }
