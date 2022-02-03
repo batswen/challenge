@@ -10,9 +10,13 @@ input {
 }
 
 #farbauswahl {
+    margin: 0.5rem 0;
     display: flex;
 }
-
+.füllen {
+    padding: 0.25rem 0.5rem;
+    border: 1px solid black;
+}
 .farbe {
     margin-right: 0.2rem;
     width: 32px;
@@ -33,8 +37,6 @@ input[type="checkbox"]:checked + label {
     
     /* vorgabe: 8x8 */
     --grid-size: 8;
-    
-    
 }
 
 #zeichenfeld {
@@ -54,14 +56,14 @@ input[type="checkbox"]:checked + label {
 
     width: var(--max-width);
     grid-template-columns: repeat(var(--grid-size), var(--width));
-    border-right: 1px solid #aaa;
-    border-bottom: 1px solid #aaa;
+    border-left: 1px solid #aaa;
+    border-top: 1px solid #aaa;
 }
 .pixel {
-    width: calc(var(--max-width) / var(--grid-size));
-    height: calc(var(--max-width) / var(--grid-size));
-    border-top: 1px solid #aaa;
-    border-left: 1px solid #aaa;
+    width: var(--width);
+    height: var(--width);
+    border-bottom: 1px solid #aaa;
+    border-right: 1px solid #aaa;
 }
 
 .d-none {
