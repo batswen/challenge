@@ -30,6 +30,12 @@ function aktuelleFarbeEinstellen(farbindex) {
 
 function bereichFüllen(x, y) {
     const alteFarbe = document.getElementById(`div-${x}${y}`).style.backgroundColor
+
+    // Diese Abfrage funktioniert nicht
+
+    // if (alteFarbe === aktuelleFarbe) {
+    //     return
+    // }
     const STACK = []
     STACK.push([x, y])
     while (STACK.length > 0) {
@@ -50,7 +56,7 @@ function bereichFüllen(x, y) {
 function feldFärben(element, x, y) {
     if (FÜLLEN.checked) {
         FÜLLEN.checked = false
-        bereichFüllen(x, y)
+        //bereichFüllen(x, y)
         return
     }
     element.style.backgroundColor = aktuelleFarbe
