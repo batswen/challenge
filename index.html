@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./public/css/index.css">
+    <script src="./public/js/index.js" defer></script>
+    <title>PixelArter</title>
+</head>
+<body>
+    <label for="größe">Größe wählen</label>
+    <select id="größe">
+        <option value="8">8x8</option>
+        <option value="12">12x12</option>
+        <option value="16">16x16</option>
+        <option value="32">32x32</option>
+    </select>
+    <input id="füllen" class="d-none" type="checkbox">
+    <label for="füllen" class="füllen">Füllen</label>
+    <div id="farbauswahl"></div>
+    <div class="zeichenfeld-container">
+        <div id="zeichenfeld"></div>
+    </div>
+    <input id="dateiname" type="text"><button id="save-png" type="button">Als PNG speichern</button>
+    <canvas id="original" class="d-none"></canvas>
+</body>
+</html>

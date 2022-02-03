@@ -1,0 +1,69 @@
+*, *::before, *::after {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14pt;
+    box-sizing: border-box;
+}
+
+input {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+#farbauswahl {
+    display: flex;
+}
+
+.farbe {
+    margin-right: 0.2rem;
+    width: 32px;
+    height: 32px;
+    border: 1px solid black;
+}
+/* Ausgewählte Farbe mit gelbem Rahmen markieren */
+input[type="radio"]:checked + label.farbe{
+    border: 3px solid yellow;
+}
+/* Füllen gelb hinterlegen */
+input[type="checkbox"]:checked + label {
+    background-color: yellow;
+}
+
+.zeichenfeld-container {
+    display: flex;
+    
+    /* vorgabe: 8x8 */
+    --grid-size: 8;
+    
+    
+}
+
+#zeichenfeld {
+    margin: 0.5rem 0;
+    display: grid;
+    grid-gap: 0;
+
+    /* Vergrößerungsfaktor */
+    --multiplikator: 5;
+
+    /* kgV(8; 12; 16; 32) = 96 */
+    /* --max-width muss durch 8, 12, 16 und 32 teilbar sein, vielfaches von 96px */
+    --max-width: calc(var(--multiplikator) * 96px);
+
+    /* Breite und Höhe eines Pixels */
+    --width: calc(var(--max-width) / var(--grid-size));
+
+    width: var(--max-width);
+    grid-template-columns: repeat(var(--grid-size), var(--width));
+    border-right: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+}
+.pixel {
+    width: calc(var(--max-width) / var(--grid-size));
+    height: calc(var(--max-width) / var(--grid-size));
+    border-top: 1px solid #aaa;
+    border-left: 1px solid #aaa;
+}
+
+.d-none {
+    display: none;
+}
